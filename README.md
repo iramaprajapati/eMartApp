@@ -1,6 +1,7 @@
 # emart_app
 
 A new Flutter project.
+Flutter eCommerce App with Firebase
 
 ## Getting Started
 
