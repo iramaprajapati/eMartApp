@@ -1,12 +1,18 @@
 import 'package:emart_app/consts/consts.dart';
-import 'package:emart_app/consts/lists.dart';
 import 'package:emart_app/widgets_common/applogo_widget.dart';
 import 'package:emart_app/widgets_common/bg_widget.dart';
 import 'package:emart_app/widgets_common/custom_textfield.dart';
 import 'package:emart_app/widgets_common/our_button.dart';
 
-class SignupScreen extends StatelessWidget {
+class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
+
+  @override
+  State<SignupScreen> createState() => _SignupScreenState();
+}
+
+class _SignupScreenState extends State<SignupScreen> {
+  bool? isCheck = false;
 
   @override
   Widget build(BuildContext context) {
@@ -33,9 +39,14 @@ class SignupScreen extends StatelessWidget {
                 Row(
                   children: [
                     Checkbox(
-                      checkColor: redColor,
-                      value: false,
-                      onChanged: (newValue) {},
+                      activeColor: redColor,
+                      checkColor: whiteColor,
+                      value: isCheck,
+                      onChanged: (newValue) {
+                        setState(() {
+                          isCheck = newValue;
+                        });
+                      },
                     ),
                     10.widthBox,
                     Expanded(
@@ -44,14 +55,14 @@ class SignupScreen extends StatelessWidget {
                           TextSpan(
                             text: "I agree to the ",
                             style: TextStyle(
-                              fontFamily: bold,
+                              fontFamily: regular,
                               color: fontGrey,
                             ),
                           ),
                           TextSpan(
                             text: "$termsAndConditions & $privacyPolicy",
                             style: TextStyle(
-                              fontFamily: bold,
+                              fontFamily: regular,
                               color: redColor,
                             ),
                           ),
@@ -63,7 +74,7 @@ class SignupScreen extends StatelessWidget {
                 //our custom button widget.
                 ourButton(
                         btnTitle: signup,
-                        btnBgColor: redColor,
+                        btnBgColor: isCheck == true ? redColor : lightGrey,
                         btnTextColor: whiteColor,
                         btnOnPressed: () {})
                     .box
@@ -71,26 +82,39 @@ class SignupScreen extends StatelessWidget {
                     .make(),
                 10.heightBox,
                 // wrapping RichText() into gesture detector of velocity_x
-                RichText(
-                  text: const TextSpan(children: [
-                    TextSpan(
-                      text: alreadyHaveAccount,
-                      style: TextStyle(
-                        fontFamily: bold,
-                        color: fontGrey,
-                      ),
-                    ),
-                    TextSpan(
-                      text: login,
-                      style: TextStyle(
-                        fontFamily: bold,
-                        color: redColor,
-                      ),
-                    ),
-                  ]),
-                ).onTap(() {
-                  Get.back();
-                }),
+                // RichText(
+                //   text: const TextSpan(children: [
+                //     TextSpan(
+                //       text: alreadyHaveAccount,
+                //       style: TextStyle(
+                //         fontFamily: bold,
+                //         color: fontGrey,
+                //       ),
+                //     ),
+                //     TextSpan(
+                //       text: login,
+                //       style: TextStyle(
+                //         fontFamily: bold,
+                //         color: redColor,
+                //       ),
+                //     ),
+                //   ]),
+                // ).onTap(() {
+                //   Get.back();
+                // }),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    alreadyHaveAccount.text.color(fontGrey).make(),
+                    login.text
+                        .color(redColor)
+                        .fontFamily(bold)
+                        .make()
+                        .onTap(() {
+                      Get.back();
+                    }),
+                  ],
+                ),
               ],
             )
                 .box
