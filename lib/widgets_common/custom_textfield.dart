@@ -1,27 +1,30 @@
 import 'package:emart_app/consts/consts.dart';
 
-Widget customTextField() {
+Widget customTextField({String? title, String? hint, controller}) {
   return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       // Using velocity_x here
-      email.text.color(redColor).fontFamily(semibold).size(16).make(),
+      title!.text.color(redColor).fontFamily(semibold).size(16).make(),
       5.heightBox,
       TextFormField(
-        decoration: const InputDecoration(
-          hintStyle: TextStyle(
+        //  controller: controller,
+        decoration: InputDecoration(
+          hintStyle: const TextStyle(
             fontFamily: semibold,
             color: textfieldGrey,
           ),
-          hintText: emailHint,
+          hintText: hint,
           isDense: true,
           fillColor: lightGrey,
           filled: true,
           border: InputBorder.none,
-          focusedBorder: OutlineInputBorder(
+          focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide(color: redColor),
           ),
         ),
       ),
+      5.heightBox,
     ],
   );
 }

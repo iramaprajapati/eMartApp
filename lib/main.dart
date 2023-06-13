@@ -1,5 +1,4 @@
 import 'package:emart_app/views/splash_screen/splash_screen.dart';
-import 'package:get/get.dart'; // GetX package.
 import 'consts/consts.dart';
 
 void main() {
