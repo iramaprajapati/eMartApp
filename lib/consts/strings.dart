@@ -30,4 +30,13 @@ const searchAnyThing = "Search anything...",
     topSellers = "Top Sellers",
     brand = "Brand",
     topCategories = "Top Categories",
-    featuredCategories = "Featured Categories";
+    featuredCategories = "Featured Categories",
+    featuredProducts = "Featured Products";
+
+// HomeScreen featuredButton Strings
+const womenDress = "Women Dress",
+    girlsWatches = "Girls Watches",
+    mobilePhone = "Mobile Phone",
+    boysGlasses = "Boys Glasses",
+    tshirts = "TShirts",
+    girlsDress = "Girls Dresses";
