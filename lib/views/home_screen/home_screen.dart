@@ -135,7 +135,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                     20.heightBox,
-                    // featured Products
+                    // Featured Products Section
                     Container(
                       width: double.infinity,
                       padding: const EdgeInsets.all(12),

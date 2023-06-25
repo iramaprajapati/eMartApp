@@ -10,6 +10,7 @@ const name = "Name";
 const nameHint = "Rama Prajapati";
 const forgetPassword = "Forget Password ?";
 const login = "Log In";
+const logout = "Log out";
 const signup = "Sign up";
 const createNewAccount = "or, create a new account";
 const loginWith = "Log in with";
@@ -41,7 +42,7 @@ const womenDress = "Women Dress",
     tshirts = "TShirts",
     girlsDress = "Girls Dresses";
 
-//Categories Screen strings
+// Categories Screen strings
 const womenClothing = "Women Clothing",
     menClothingFashion = "Men Clothing & Fashion",
     compAccess = "Computer & Accessories",
@@ -51,3 +52,14 @@ const womenClothing = "Women Clothing",
     jewelery = "Jewelery",
     cellphone = "Cellphone & Tab",
     furniture = "Furniture";
+
+// Item details strings
+const video = "Video",
+    reviews = "Reviews",
+    sellerPolicy = "Seller Policy",
+    returnPolity = "Return Policy",
+    supportPolicy = "Support Policy",
+    productsyoumaylike = "Products you may also like";
+
+// Profile stirngs |
+const orders = "My Orders", wishlist = "My Wishlist", messagse = "Messages";
