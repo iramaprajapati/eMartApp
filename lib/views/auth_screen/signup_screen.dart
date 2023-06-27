@@ -1,4 +1,6 @@
 import 'package:emart_app/consts/consts.dart';
+import 'package:emart_app/controllers/auth_controller.dart';
+import 'package:emart_app/views/home_screen/home.dart';
 import 'package:emart_app/widgets_common/applogo_widget.dart';
 import 'package:emart_app/widgets_common/bg_widget.dart';
 import 'package:emart_app/widgets_common/custom_textfield.dart';
@@ -13,6 +15,13 @@ class SignupScreen extends StatefulWidget {
 
 class _SignupScreenState extends State<SignupScreen> {
   bool? isCheck = false;
+  var authController = Get.put(AuthController());
+
+  // Text Editing Controllers
+  var nameController = TextEditingController();
+  var emailController = TextEditingController();
+  var passwordController = TextEditingController();
+  var retypePasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -31,10 +40,20 @@ class _SignupScreenState extends State<SignupScreen> {
             Column(
               children: [
                 //our customTextField widget.
-                customTextField(title: name, hint: nameHint),
-                customTextField(title: email, hint: emailHint),
-                customTextField(title: password, hint: passwordHint),
-                customTextField(title: retypePassword, hint: passwordHint),
+                customTextField(
+                    title: name, hint: nameHint, controller: nameController),
+                customTextField(
+                    title: email, hint: emailHint, controller: emailController),
+                customTextField(
+                    title: password,
+                    hint: passwordHint,
+                    controller: passwordController,
+                    isPassTextField: true),
+                customTextField(
+                    title: retypePassword,
+                    hint: passwordHint,
+                    controller: retypePasswordController,
+                    isPassTextField: true),
                 5.heightBox,
                 Row(
                   children: [
@@ -73,13 +92,33 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
                 //our custom button widget.
                 ourButton(
-                        btnTitle: signup,
-                        btnBgColor: isCheck == true ? redColor : lightGrey,
-                        btnTextColor: whiteColor,
-                        btnOnPressed: () {})
-                    .box
-                    .width(context.screenWidth - 50)
-                    .make(),
+                    btnTitle: signup,
+                    btnBgColor: isCheck == true ? redColor : lightGrey,
+                    btnTextColor: whiteColor,
+                    btnOnPressed: () async {
+                      if (isCheck == true) {
+                        try {
+                          await authController
+                              .signupMethod(
+                                  email: emailController.text,
+                                  password: passwordController.text,
+                                  context: context)
+                              .then((value) {
+                            return authController.storeUserData(
+                              name: nameController.text,
+                              email: emailController.text,
+                              password: passwordController.text,
+                            );
+                          }).then((value) {
+                            VxToast.show(context, msg: loggedIn);
+                            Get.offAll(() => const Home());
+                          });
+                        } catch (e) {
+                          auth.signOut();
+                          VxToast.show(context, msg: e.toString());
+                        }
+                      }
+                    }).box.width(context.screenWidth - 50).make(),
                 10.heightBox,
                 // wrapping RichText() into gesture detector of velocity_x
                 // RichText(

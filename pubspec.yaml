@@ -40,6 +40,13 @@ dependencies:
   firebase_auth: ^3.11.2
   firebase_storage: ^10.3.11
   cloud_firestore: ^3.5.1
+  firebase_messaging: ^13.0.4
+
+# Error: Member not found: 'FirebaseAppPlatform.verifyExtends'
+# If you need to maintain the current dependency version, you can add the dependency override to your root pubspec.yaml to fix this too.
+# If you use multiple local packages in your project, this makes it so you don't have to update all your pubspec.yaml files
+dependency_overrides:
+  firebase_core_platform_interface: 4.5.1
 
 dev_dependencies:
   flutter_test:

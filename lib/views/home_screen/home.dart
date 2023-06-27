@@ -10,7 +10,7 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var controller = Get.put(HomeController());
+    var homeController = Get.put(HomeController());
 
     var navbarItem = [
       BottomNavigationBarItem(
@@ -51,16 +51,16 @@ class Home extends StatelessWidget {
         children: [
           Obx(
             () => Expanded(
-              child: navBody.elementAt(controller.currentNavIndex.value),
+              child: navBody.elementAt(homeController.currentNavIndex.value),
             ),
           ),
         ],
       ),
       bottomNavigationBar: Obx(
         () => BottomNavigationBar(
-          currentIndex: controller.currentNavIndex.value,
+          currentIndex: homeController.currentNavIndex.value,
           onTap: (newValue) {
-            controller.currentNavIndex.value = newValue;
+            homeController.currentNavIndex.value = newValue;
           },
           items: navbarItem,
           backgroundColor: whiteColor,

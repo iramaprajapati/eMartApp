@@ -1,5 +1,6 @@
 import 'package:emart_app/consts/consts.dart';
 import 'package:emart_app/consts/lists.dart';
+import 'package:emart_app/controllers/auth_controller.dart';
 import 'package:emart_app/views/auth_screen/signup_screen.dart';
 import 'package:emart_app/views/home_screen/home.dart';
 import 'package:emart_app/widgets_common/applogo_widget.dart';
@@ -12,6 +13,9 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Get.put() is used to initialize controller and this is called dependency injection.
+    AuthController authController = Get.put(AuthController());
+
     return bgWidget(
         child: Scaffold(
       resizeToAvoidBottomInset: false,
@@ -27,8 +31,15 @@ class LoginScreen extends StatelessWidget {
             Column(
               children: [
                 //our customTextField widget.
-                customTextField(title: email, hint: emailHint),
-                customTextField(title: password, hint: passwordHint),
+                customTextField(
+                    title: email,
+                    hint: emailHint,
+                    controller: authController.emailController),
+                customTextField(
+                    title: password,
+                    hint: passwordHint,
+                    controller: authController.passwordController,
+                    isPassTextField: true),
                 Align(
                   alignment: Alignment.centerRight,
                   child: TextButton(
@@ -42,8 +53,15 @@ class LoginScreen extends StatelessWidget {
                     btnTitle: login,
                     btnBgColor: redColor,
                     btnTextColor: whiteColor,
-                    btnOnPressed: () {
-                      Get.to(() => const Home());
+                    btnOnPressed: () async {
+                      await authController.loginMethod(context: context).then(
+                        (value) {
+                          if (value != null) {
+                            VxToast.show(context, msg: loggedIn);
+                            Get.offAll(() => const Home());
+                          }
+                        },
+                      );
                     }).box.width(context.screenWidth - 50).make(),
                 5.heightBox,
                 createNewAccount.text.color(fontGrey).make(),
