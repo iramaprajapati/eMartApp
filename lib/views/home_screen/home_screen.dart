@@ -226,7 +226,7 @@ class HomeScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Image.asset(
-                              imgP5,
+                              imgP1,
                               height: 200,
                               width: 200,
                               fit: BoxFit.cover,

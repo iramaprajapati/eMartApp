@@ -17,14 +17,14 @@ const freaturedTitlesl = [womenDress, girlsDress, girlsWatches];
 const freaturedTitles2 = [boysGlasses, mobilePhone, tshirts];
 
 const categoriesList = [
-  womenClothing,
   menClothingFashion,
   compAccess,
   automobile,
   kidtoys,
   sports,
-  jewelery,
   cellphone,
+  beautyProducts,
+  repairingTools,
   furniture,
 ];
 

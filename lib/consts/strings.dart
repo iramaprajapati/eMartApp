@@ -52,8 +52,10 @@ const womenClothing = "Women Clothing",
     kidtoys = "Kids & Toys",
     sports = "Sports",
     jewelery = "Jewelery",
+    beautyProducts = "Beauty Products",
     cellphone = "Cellphone & Tab",
-    furniture = "Furniture";
+    furniture = "Furniture",
+    repairingTools = "Repairing Tools";
 
 // Item details strings
 const video = "Video",

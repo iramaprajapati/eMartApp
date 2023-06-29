@@ -35,6 +35,9 @@ class CategoryScreen extends StatelessWidget {
                   10.heightBox,
                   categoriesList[index]
                       .text
+                      .fontFamily(semibold)
+                      //.maxLines(2)
+                      //.overflow(TextOverflow.ellipsis)
                       .color(darkFontGrey)
                       .align(TextAlign.center)
                       .make(),

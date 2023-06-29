@@ -54,7 +54,7 @@ class CategoryDetails extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Image.asset(
-                        imgP5,
+                        imgP1,
                         height: 150,
                         width: 200,
                         fit: BoxFit.cover,

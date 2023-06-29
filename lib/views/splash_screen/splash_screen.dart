@@ -1,6 +1,8 @@
 import 'package:emart_app/consts/consts.dart';
 import 'package:emart_app/views/auth_screen/login_screen.dart';
+import 'package:emart_app/views/home_screen/home.dart';
 import 'package:emart_app/widgets_common/applogo_widget.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -17,7 +19,16 @@ class _SplashScreenState extends State<SplashScreen> {
       () {
         // Using GetX
         // Consider using: "Get.to(() => Page())" instead of "Get.to(Page())".
-        Get.to(() => const LoginScreen());
+        // Get.to(() => const LoginScreen());
+
+        ///  authStateChanges step is required for going to the Home page after firebase setup.
+        auth.authStateChanges().listen((User? user) {
+          if (user == null && mounted) {
+            Get.to(() => const LoginScreen());
+          } else {
+            Get.to(() => const Home());
+          }
+        });
       },
     );
   }
