@@ -31,6 +31,7 @@ class ItemDetails extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(8),
               child: SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -220,6 +221,7 @@ class ItemDetails extends StatelessWidget {
                     10.heightBox,
                     // This widget is copied from home screen featured products section.
                     SingleChildScrollView(
+                      physics: const BouncingScrollPhysics(),
                       scrollDirection: Axis.horizontal,
                       child: Row(
                         children: List.generate(

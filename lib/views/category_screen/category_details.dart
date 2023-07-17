@@ -1,4 +1,5 @@
 import 'package:emart_app/consts/consts.dart';
+import 'package:emart_app/controllers/product_controller.dart';
 import 'package:emart_app/views/category_screen/item_details.dart';
 import 'package:emart_app/widgets_common/bg_widget.dart';
 
@@ -8,6 +9,7 @@ class CategoryDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ProductController productController = Get.find();
     return bgWidget(
         child: Scaffold(
       appBar: AppBar(
@@ -16,15 +18,18 @@ class CategoryDetails extends StatelessWidget {
       body: Container(
         padding: const EdgeInsets.all(12),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               physics: const BouncingScrollPhysics(),
               child: Row(
                 children: List.generate(
-                    6,
-                    (index) => "Baby Clothing"
+                    productController.subcat.length,
+                    (index) => productController.subcat[index]
+                        .toString()
                         .text
+                        .softWrap(false)
                         .size(12)
                         .fontFamily(semibold)
                         .color(darkFontGrey)
@@ -32,7 +37,7 @@ class CategoryDetails extends StatelessWidget {
                         .box
                         .white
                         .roundedSM
-                        .size(120, 60)
+                        .size(140, 60)
                         .margin(const EdgeInsets.symmetric(horizontal: 4))
                         .make()),
               ),

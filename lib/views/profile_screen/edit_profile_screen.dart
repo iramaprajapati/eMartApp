@@ -29,6 +29,7 @@ class EditProfileScreen extends StatelessWidget {
                   ? Image.asset(
                       imgProfile3,
                       width: 100,
+                      height: 100,
                       fit: BoxFit.cover,
                     ).box.roundedFull.clip(Clip.antiAlias).make()
 
@@ -38,6 +39,7 @@ class EditProfileScreen extends StatelessWidget {
                       ? Image.network(
                           userProfileData["profileImgUrl"],
                           width: 100,
+                          height: 100,
                           fit: BoxFit.cover,
                         ).box.roundedFull.clip(Clip.antiAlias).make()
 
@@ -45,6 +47,7 @@ class EditProfileScreen extends StatelessWidget {
                       : Image.file(
                           File(profileController.profileImgPath.value),
                           width: 100,
+                          height: 100,
                           fit: BoxFit.cover,
                         ).box.roundedFull.clip(Clip.antiAlias).make(),
               10.heightBox,
@@ -61,10 +64,17 @@ class EditProfileScreen extends StatelessWidget {
                   title: name,
                   hint: nameHint,
                   controller: profileController.nameController),
+              10.heightBox,
               customTextField(
-                  title: password,
+                  title: oldpass,
                   hint: passwordHint,
-                  controller: profileController.passwordController,
+                  controller: profileController.oldPasswordController,
+                  isPassTextField: true),
+              10.heightBox,
+              customTextField(
+                  title: newpass,
+                  hint: passwordHint,
+                  controller: profileController.newPasswordController,
                   isPassTextField: true),
               20.heightBox,
               profileController.isLoading.value
@@ -74,19 +84,44 @@ class EditProfileScreen extends StatelessWidget {
                   : SizedBox(
                       width: context.screenWidth - 60,
                       child: ourButton(
-                          btnTitle: "Save",
+                          btnTitle: "Update",
                           btnTextColor: whiteColor,
                           btnBgColor: redColor,
                           btnOnPressed: () async {
                             profileController.isLoading(true);
-                            await profileController.uploadProfileImage();
-                            await profileController.updateProfile(
-                              name: profileController.nameController.text,
-                              password:
-                                  profileController.passwordController.text,
-                              imgUrl: profileController.profileImgLink,
-                            );
-                            VxToast.show(context, msg: "Saved successfully!");
+
+                            // if profile image is not selected
+                            if (profileController
+                                .profileImgPath.value.isNotEmpty) {
+                              await profileController.uploadProfileImage();
+                            } else {
+                              profileController.profileImgLink =
+                                  userProfileData["profileImgUrl"];
+                            }
+
+                            // if old password matches firebase database password.
+                            if (userProfileData["password"] ==
+                                profileController.oldPasswordController.text) {
+                              // to update user login password
+                              await profileController.changeAuthPassword(
+                                  email: userProfileData["email"],
+                                  oldPassword: profileController
+                                      .oldPasswordController.text,
+                                  newPassword: profileController
+                                      .newPasswordController.text);
+
+                              await profileController.updateProfile(
+                                name: profileController.nameController.text,
+                                password: profileController
+                                    .newPasswordController.text,
+                                imgUrl: profileController.profileImgLink,
+                              );
+                              VxToast.show(context,
+                                  msg: "Updated successfully!");
+                            } else {
+                              VxToast.show(context, msg: "Wrong old password.");
+                              profileController.isLoading(false);
+                            }
                           }),
                     ),
             ],

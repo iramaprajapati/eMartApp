@@ -66,4 +66,8 @@ const video = "Video",
     productsyoumaylike = "Products you may also like";
 
 // Profile stirngs |
-const orders = "My Orders", wishlist = "My Wishlist", messagse = "Messages";
+const orders = "My Orders",
+    wishlist = "My Wishlist",
+    messagse = "Messages",
+    oldpass = "Old password",
+    newpass = "New Password";

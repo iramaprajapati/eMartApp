@@ -45,8 +45,6 @@ class ProfileScreen extends StatelessWidget {
                       ).onTap(() {
                         profileController.nameController.text =
                             userProfileData["name"];
-                        profileController.passwordController.text =
-                            userProfileData["password"];
                         Get.to(() => EditProfileScreen(
                             userProfileData: userProfileData));
                       }),
@@ -61,11 +59,13 @@ class ProfileScreen extends StatelessWidget {
                               ? Image.asset(
                                   imgProfile3,
                                   width: 60,
+                                  height: 60,
                                   fit: BoxFit.cover,
                                 ).box.roundedFull.clip(Clip.antiAlias).make()
                               : Image.network(
                                   userProfileData["profileImgUrl"],
                                   width: 60,
+                                  height: 60,
                                   fit: BoxFit.cover,
                                 ).box.roundedFull.clip(Clip.antiAlias).make(),
                           10.widthBox,

@@ -1,0 +1,86 @@
+{
+    "categories": [
+        {
+            "name": "Men Clothing & Fashion",
+            "subcategory": [
+                "Casual",
+                "Smart Casual",
+                "Business Casual",
+                "Business Professional",
+                "Cocktail Attire"
+            ]
+        },
+        {
+            "name": "Computer & Accessories",
+            "subcategory": [
+                "Keyboards",
+                "Mice",
+                "Headsets",
+                "Laptop Chargers",
+                "Webcams"
+            ]
+        },
+        {
+            "name": "Automobile",
+            "subcategory": [
+                "Cars",
+                "Bikes",
+                "Trucks"
+            ]
+        },
+        {
+            "name": "Kids & Toys",
+            "subcategory": [
+                "Shoes & Bags",
+                "Baby Clothing",
+                "Girls Toys"
+            ]
+        },
+        {
+            "name": "Sports",
+            "subcategory": [
+                "Cycling",
+                "sneakers",
+                "Swimming"
+            ]
+        },
+        {
+            "name": "Cellphone & Tab",
+            "subcategory": [
+                "Smartphone",
+                "Tablets",
+                "Accessories"
+            ]
+        },
+        {
+            "name": "Beauty Products",
+            "subcategory": [
+                "Oral Care",
+                "Skin Care",
+                "Sun Care",
+                "Hair Care",
+                "Decorative Cosmetics",
+                "Body Care",
+                "Perfumes"
+            ]
+        },
+        {
+            "name": "Repairing Tools",
+            "subcategory": [
+                "Hammer",
+                "Scissors",
+                "Screwdriver",
+                "Measuring Tape",
+                "Test Pencil"
+            ]
+        },
+        {
+            "name": "Furniture",
+            "subcategory": [
+                "Sofa",
+                "Bed",
+                "Home Textile"
+            ]
+        }
+    ]
+}
