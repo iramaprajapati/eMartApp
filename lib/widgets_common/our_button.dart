@@ -1,6 +1,11 @@
 import 'package:emart_app/consts/consts.dart';
 
-Widget ourButton({String? btnTitle, btnOnPressed, btnBgColor, btnTextColor}) {
+Widget ourButton({
+  String? btnTitle,
+  btnBgColor,
+  btnTextColor,
+  required void Function()? btnOnPressed,
+}) {
   return ElevatedButton(
       style: ElevatedButton.styleFrom(
         backgroundColor: btnBgColor,

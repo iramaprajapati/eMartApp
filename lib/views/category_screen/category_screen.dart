@@ -14,6 +14,7 @@ class CategoryScreen extends StatelessWidget {
     return bgWidget(
       child: Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false, // Used for removing back buttoon.
           title: categories.text.white.fontFamily(bold).make(),
         ),
         body: Container(

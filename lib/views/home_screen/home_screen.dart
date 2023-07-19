@@ -1,7 +1,7 @@
 import 'package:emart_app/consts/consts.dart';
 import 'package:emart_app/consts/lists.dart';
 import 'package:emart_app/views/home_screen/components/featured_button.dart';
-import 'package:emart_app/widgets_common/home_buttons.dart';
+import 'package:emart_app/widgets_common/common_widgets.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

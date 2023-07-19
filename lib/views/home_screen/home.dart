@@ -4,6 +4,7 @@ import 'package:emart_app/views/cart_screen/cart_screen.dart';
 import 'package:emart_app/views/category_screen/category_screen.dart';
 import 'package:emart_app/views/home_screen/home_screen.dart';
 import 'package:emart_app/views/profile_screen/profile_screen.dart';
+import 'package:emart_app/widgets_common/exit_dialog.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -46,27 +47,42 @@ class Home extends StatelessWidget {
       const ProfileScreen(),
     ];
 
-    return Scaffold(
-      body: Column(
-        children: [
-          Obx(
-            () => Expanded(
-              child: navBody.elementAt(homeController.currentNavIndex.value),
+    /* The WillPopScope widget is used to control the back button of our smartphone which 
+       is at the bottom of the screen. With the help of this widget, we can allow the 
+       back button to navigate to the previous page or give the callback False 
+       so it can't navigate us to the previous page. */
+
+    return WillPopScope(
+      onWillPop: () async {
+        showDialog(
+          barrierDismissible: false,
+          context: context,
+          builder: (context) => exitDialog(context),
+        );
+        return false;
+      },
+      child: Scaffold(
+        body: Column(
+          children: [
+            Obx(
+              () => Expanded(
+                child: navBody.elementAt(homeController.currentNavIndex.value),
+              ),
             ),
+          ],
+        ),
+        bottomNavigationBar: Obx(
+          () => BottomNavigationBar(
+            currentIndex: homeController.currentNavIndex.value,
+            onTap: (newValue) {
+              homeController.currentNavIndex.value = newValue;
+            },
+            items: navbarItem,
+            backgroundColor: whiteColor,
+            type: BottomNavigationBarType.fixed,
+            selectedItemColor: redColor,
+            selectedLabelStyle: const TextStyle(fontFamily: semibold),
           ),
-        ],
-      ),
-      bottomNavigationBar: Obx(
-        () => BottomNavigationBar(
-          currentIndex: homeController.currentNavIndex.value,
-          onTap: (newValue) {
-            homeController.currentNavIndex.value = newValue;
-          },
-          items: navbarItem,
-          backgroundColor: whiteColor,
-          type: BottomNavigationBarType.fixed,
-          selectedItemColor: redColor,
-          selectedLabelStyle: const TextStyle(fontFamily: semibold),
         ),
       ),
     );

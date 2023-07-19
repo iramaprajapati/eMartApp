@@ -4,6 +4,7 @@ import 'package:emart_app/controllers/product_controller.dart';
 import 'package:emart_app/services/firestore_services.dart';
 import 'package:emart_app/views/category_screen/item_details.dart';
 import 'package:emart_app/widgets_common/bg_widget.dart';
+import 'package:emart_app/widgets_common/common_widgets.dart';
 
 class CategoryDetails extends StatelessWidget {
   final String? strTitle;
@@ -124,10 +125,4 @@ class CategoryDetails extends StatelessWidget {
       ),
     );
   }
-}
-
-Widget loadingIndicator() {
-  return const CircularProgressIndicator(
-    valueColor: AlwaysStoppedAnimation(redColor),
-  );
 }

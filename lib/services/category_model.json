@@ -13,10 +13,11 @@
         {
             "name": "Computer & Accessories",
             "subcategory": [
+                "Laptops",
+                "Computers",
                 "Keyboards",
                 "Mice",
                 "Headsets",
-                "Laptop Chargers",
                 "Webcams"
             ]
         },

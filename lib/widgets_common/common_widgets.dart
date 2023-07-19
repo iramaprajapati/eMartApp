@@ -1,3 +1,4 @@
+
 import 'package:emart_app/consts/consts.dart';
 
 Widget homeButtons({width, height, icon, String? tilte, onPressed}) {
@@ -12,4 +13,10 @@ Widget homeButtons({width, height, icon, String? tilte, onPressed}) {
       tilte!.text.fontFamily(semibold).color(darkFontGrey).make()
     ],
   ).box.rounded.white.size(width, height).make();
+}
+
+Widget loadingIndicator() {
+  return const CircularProgressIndicator(
+    valueColor: AlwaysStoppedAnimation(redColor),
+  );
 }

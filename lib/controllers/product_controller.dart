@@ -3,7 +3,7 @@ import 'package:emart_app/models/category_model.dart';
 import 'package:flutter/services.dart';
 
 class ProductController extends GetxController {
-  var quantity = 0.obs;
+  var quantity = 1.obs;
   var colorIndex = 0.obs;
   var totalPrice = 0.obs;
   var subcat = [];
@@ -30,7 +30,7 @@ class ProductController extends GetxController {
   }
 
   decreaseQuantity() {
-    if (quantity.value > 0) {
+    if (quantity.value > 1) {
       quantity.value--;
     }
   }
@@ -38,5 +38,27 @@ class ProductController extends GetxController {
   // calculate total price
   calculateTotalPrice(price) {
     totalPrice.value = price * quantity.value;
+  }
+
+  addToCart({title, img, sellername, color, qty, totalprice, context}) async {
+    await firestore.collection(cartCollection).doc().set({
+      "title": title,
+      "img": img,
+      "sellername": sellername,
+      "color": color,
+      "qty": qty,
+      "totalprice": totalprice,
+      "added_by": currentUser!.uid
+    }).catchError((error) {
+      VxToast.show(context, msg: error.toString());
+    });
+  }
+
+  resetValues() {
+    /* This method is used to reset all the selected values by user 
+     to it's initial values on item_details page.*/
+    totalPrice.value = 0;
+    quantity.value = 0;
+    colorIndex.value = 0;
   }
 }
