@@ -107,6 +107,8 @@ class CategoryDetails extends StatelessWidget {
                               .padding(const EdgeInsets.all(12))
                               .make()
                               .onTap(() {
+                            productController
+                                .checkIfFavorite(productsData[index]);
                             Get.to(
                               () => ItemDetails(
                                   strTitle: "${productsData[index]["p_name"]}",

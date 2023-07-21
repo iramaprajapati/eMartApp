@@ -42,6 +42,7 @@ dependencies:
   cloud_firestore: ^3.5.1
   firebase_messaging: ^13.0.4
   image_picker: ^1.0.0
+  intl: ^0.17.0
 
 # Error: Member not found: 'FirebaseAppPlatform.verifyExtends'
 # If you need to maintain the current dependency version, you can add the dependency override to your root pubspec.yaml to fix this too.

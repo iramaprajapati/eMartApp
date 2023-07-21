@@ -14,6 +14,15 @@ class CartScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: whiteColor,
+      bottomNavigationBar: SizedBox(
+        height: 50,
+        child: ourButton(
+          btnTitle: "Proceed to buy",
+          btnTextColor: whiteColor,
+          btnBgColor: redColor,
+          btnOnPressed: () {},
+        ),
+      ),
       appBar: AppBar(
         automaticallyImplyLeading: false, // Used for removing back buttoon.
         title:
@@ -89,15 +98,15 @@ class CartScreen extends StatelessWidget {
                       .roundedSM
                       .make(),
                   10.heightBox,
-                  SizedBox(
-                    width: context.screenWidth - 60,
-                    child: ourButton(
-                      btnTitle: "Proceed to buy",
-                      btnTextColor: whiteColor,
-                      btnBgColor: redColor,
-                      btnOnPressed: () {},
-                    ),
-                  ),
+                  // SizedBox(
+                  //   width: context.screenWidth - 60,
+                  //   child: ourButton(
+                  //     btnTitle: "Proceed to buy",
+                  //     btnTextColor: whiteColor,
+                  //     btnBgColor: redColor,
+                  //     btnOnPressed: () {},
+                  //   ),
+                  // ),
                 ],
               ),
             );
