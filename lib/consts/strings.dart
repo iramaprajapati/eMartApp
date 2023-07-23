@@ -20,6 +20,26 @@ const privacyPolicy = "Privacy Policy";
 const termsAndConditions = "Terms and Conditions";
 const alreadyHaveAccount = "Already have an account ? ";
 
+// Shipping Details Strings
+const invalidName = "Please enter a valid name";
+const invalidMobile = "Please enter a valid mobile number";
+const invalidAmount = "Please enter amount";
+const invalidEmail = "Please enter a valid email Id";
+const invalidUsername = "Please enter a valid username";
+const invalidPassword = "Enter minimum six digit password";
+const invalidConfirmPassword = "Password not match";
+const invalidOtp = "Please enter four digit OTP";
+const invalidEmpty = "This field is required";
+const invalidAccount = "Please enter a valid a/c number";
+const invalidCode = "Please enter a valid code";
+const passwordNotMatch = "Password not match";
+const invalidAadhaar = "Please enter a valid aadhar number";
+const invalidPan = "Please enter a valid pan number";
+const invalidDob = "Please select date";
+const invalidPincode = "Please enter a valid pin code";
+const invalidCity = "Please enter a valid city name";
+const invalidState = "Please enter a valid state name";
+
 // Home Strings
 const home = "Home",
     categories = "Categories",
@@ -65,9 +85,12 @@ const video = "Video",
     supportPolicy = "Support Policy",
     productsyoumaylike = "Products you may also like";
 
-// Profile stirngs |
+// Profile stirngs
 const orders = "My Orders",
     wishlist = "My Wishlist",
     messagse = "Messages",
     oldpass = "Old password",
     newpass = "New Password";
+
+//Payment Methods Strings
+const paypal = "Paypal", stripe = "Stripe", cod = "Cash on Delivery";

@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:emart_app/consts/consts.dart';
 import 'package:emart_app/controllers/cart_controller.dart';
 import 'package:emart_app/services/firestore_services.dart';
+import 'package:emart_app/views/cart_screen/shipping_details.dart';
 import 'package:emart_app/widgets_common/common_widgets.dart';
 import 'package:emart_app/widgets_common/our_button.dart';
 
@@ -17,10 +18,12 @@ class CartScreen extends StatelessWidget {
       bottomNavigationBar: SizedBox(
         height: 50,
         child: ourButton(
-          btnTitle: "Proceed to buy",
+          btnTitle: "Proceed to shipping",
           btnTextColor: whiteColor,
           btnBgColor: redColor,
-          btnOnPressed: () {},
+          btnOnPressed: () {
+            Get.to(() => const ShippingDetails());
+          },
         ),
       ),
       appBar: AppBar(
@@ -42,6 +45,7 @@ class CartScreen extends StatelessWidget {
           } else {
             var cartData = snapshot.data!.docs;
             cartController.calculateCartTotalPrice(cartData);
+            cartController.productSnapshot = cartData;
             return Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
