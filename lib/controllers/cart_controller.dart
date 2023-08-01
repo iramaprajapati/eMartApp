@@ -5,6 +5,7 @@ import 'package:emart_app/controllers/home_controller.dart';
 class CartController extends GetxController {
   var totalCartPrice = 0.obs;
   var paymentIndex = 0.obs;
+  var placingOrder = false.obs;
   var products = [];
   late dynamic productSnapshot;
 
@@ -29,6 +30,8 @@ class CartController extends GetxController {
   }
 
   placeMyOrder({required orderPaymentMethod, required totalAmount}) async {
+    placingOrder(true);
+
     await getProductDetails();
     await firestore.collection(ordersCollection).doc().set({
       "order_code": "233981237",
@@ -50,19 +53,29 @@ class CartController extends GetxController {
       "total_amount": totalAmount,
       "orders": FieldValue.arrayUnion(products)
     });
+
+    placingOrder(false);
   }
 
   getProductDetails() {
     products.clear();
     for (var i = 0; i < productSnapshot.length; i++) {
       products.add({
+        "title": productSnapshot[i]["title"],
         "color": productSnapshot[i]["color"],
         "img": productSnapshot[i]["img"],
         "qty": productSnapshot[i]["qty"],
-        "title": productSnapshot[i]["title"]
+        "vendor_id": productSnapshot[i]["vendor_id"],
+        "totalprice": productSnapshot[i]["totalprice"]
       });
     }
+    //print(products);
+  }
 
-    print(products);
+  // This method is used to clear the cart after final order placed.
+  clearCart() async {
+    for (var i = 0; i < productSnapshot.length; i++) {
+      firestore.collection(cartCollection).doc(productSnapshot[i].id).delete();
+    }
   }
 }

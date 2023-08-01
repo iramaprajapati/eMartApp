@@ -39,4 +39,28 @@ class FirestoreServices {
         .orderBy("created_on", descending: false)
         .snapshots();
   }
+
+  // get all orders on profile screen
+  static getAllOrders() {
+    return firestore
+        .collection(ordersCollection)
+        .where("order_by", isEqualTo: currentUser!.uid)
+        .snapshots();
+  }
+
+  // get all Wishlists on profile screen
+  static getAllWishlists() {
+    return firestore
+        .collection(productsCollection)
+        .where("p_wishlist", arrayContains: currentUser!.uid)
+        .snapshots();
+  }
+
+  // get all Messages on profile screen
+  static getAllMessages() {
+    return firestore
+        .collection(chatsCollection)
+        .where("fromId", isEqualTo: currentUser!.uid)
+        .snapshots();
+  }
 }
