@@ -17,6 +17,14 @@ class FirestoreServices {
         .snapshots();
   }
 
+//get products according to subcategory
+  static getSubCategoryProducts(subcategory) {
+    return firestore
+        .collection(productsCollection)
+        .where("p_subcategory", isEqualTo: subcategory)
+        .snapshots();
+  }
+
   //get cart product details according to current user Id.
   static getCartDetails(uid) {
     return firestore
@@ -62,5 +70,45 @@ class FirestoreServices {
         .collection(chatsCollection)
         .where("fromId", isEqualTo: currentUser!.uid)
         .snapshots();
+  }
+
+  // get all cart items,wishlists and orders counts on profile screen
+  static getAllCounts() async {
+    var res = await Future.wait([
+      firestore
+          .collection(cartCollection)
+          .where("added_by", isEqualTo: currentUser!.uid)
+          .get()
+          .then((value) => value.docs.length),
+      firestore
+          .collection(productsCollection)
+          .where("p_wishlist", arrayContains: currentUser!.uid)
+          .get()
+          .then((value) => value.docs.length),
+      firestore
+          .collection(ordersCollection)
+          .where("order_by", isEqualTo: currentUser!.uid)
+          .get()
+          .then((value) => value.docs.length),
+    ]);
+    return res;
+  }
+
+// get all Products on home screen
+  static getAllProducts() {
+    return firestore.collection(productsCollection).snapshots();
+  }
+
+// get all Featured Products on home screen
+  static getFeaturedProducts() {
+    return firestore
+        .collection(productsCollection)
+        .where("is_featured", isEqualTo: true)
+        .get();
+  }
+
+  // get all Featured Products on home screen
+  static searchProducts() {
+    return firestore.collection(productsCollection).get();
   }
 }

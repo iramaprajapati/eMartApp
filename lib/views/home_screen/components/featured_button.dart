@@ -1,4 +1,5 @@
 import 'package:emart_app/consts/consts.dart';
+import 'package:emart_app/views/category_screen/category_details.dart';
 
 Widget featuredButton({String? tilte, icon}) {
   return Row(
@@ -19,5 +20,8 @@ Widget featuredButton({String? tilte, icon}) {
       .padding(const EdgeInsets.all(4))
       .roundedSM
       .outerShadowSm
-      .make();
+      .make()
+      .onTap(() {
+    Get.to(() => CategoryDetails(strTitle: tilte));
+  });
 }

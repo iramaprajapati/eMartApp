@@ -4,7 +4,7 @@ import 'package:emart_app/models/category_model.dart';
 import 'package:flutter/services.dart';
 
 class ProductController extends GetxController {
-  var quantity = 1.obs;
+  var quantity = 0.obs;
   var colorIndex = 0.obs;
   var totalPrice = 0.obs;
   var isFav = false.obs;

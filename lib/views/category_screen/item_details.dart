@@ -11,8 +11,8 @@ class ItemDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ProductController productController = Get.find();
-
+    // ProductController productController = Get.find(); // Get.find() is used to find already initialized controller.
+    ProductController productController = Get.put(ProductController());
     return WillPopScope(
       onWillPop: () async {
         productController.resetValues();
@@ -352,18 +352,23 @@ class ItemDetails extends StatelessWidget {
                 btnTitle: "Add to Cart",
                 btnTextColor: whiteColor,
                 btnOnPressed: () {
-                  productController.addToCart(
-                    color: productsData["p_colors"]
-                        [productController.colorIndex.value],
-                    context: context,
-                    vendorId: productsData["vendor_id"],
-                    img: productsData["p_imgs"][0],
-                    qty: productController.quantity.value,
-                    sellername: productsData["p_seller"],
-                    title: productsData["p_name"],
-                    totalprice: productController.totalPrice.value,
-                  );
-                  VxToast.show(context, msg: "Added to Cart");
+                  if (productController.quantity.value > 0) {
+                    productController.addToCart(
+                      color: productsData["p_colors"]
+                          [productController.colorIndex.value],
+                      context: context,
+                      vendorId: productsData["vendor_id"],
+                      img: productsData["p_imgs"][0],
+                      qty: productController.quantity.value,
+                      sellername: productsData["p_seller"],
+                      title: productsData["p_name"],
+                      totalprice: productController.totalPrice.value,
+                    );
+                    VxToast.show(context, msg: "Added to Cart");
+                  } else {
+                    VxToast.show(context,
+                        msg: "Minimum 1 quantity is required !");
+                  }
                 },
               ),
             ),

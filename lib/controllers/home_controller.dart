@@ -3,6 +3,7 @@ import 'package:emart_app/consts/consts.dart';
 class HomeController extends GetxController {
   var currentNavIndex = 0.obs;
   var userName = "";
+  var searchController = TextEditingController();
 
   @override
   void onInit() {
