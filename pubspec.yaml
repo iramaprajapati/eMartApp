@@ -33,6 +33,7 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
+  
   cupertino_icons: ^1.0.2
   velocity_x: ^3.5.1
   get: ^4.6.5
@@ -60,6 +61,25 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+  flutter_native_splash: ^2.2.9
+  flutter_launcher_icons: ^0.10.0
+
+
+flutter_icons:
+  android: "launcher_icon"
+  background_color: "#ffffff"
+  ios: true
+  image_path: "assets/icons/app_logo.png"
+  #flutter pub run flutter_launcher_icons:main
+
+
+flutter_native_splash:
+  color: "#30D5C8"
+  image: "assets/images/appImg.png"
+  androis: true
+  ios: true
+  #flutter pub run flutter_native_splash:create
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

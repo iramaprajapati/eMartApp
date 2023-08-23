@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         ),
         fontFamily: regular,
       ),
-      home: SplashScreen(),
+      home: const SplashScreen(),
     );
   }
 }
